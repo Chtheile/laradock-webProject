@@ -12,7 +12,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-
+    <link href="{{ asset('css/dataTables.bootstrap.min.css') }}" rel="stylesheet">
     <!-- Scripts -->
     <script>
         window.Laravel = {!! json_encode([
@@ -93,7 +93,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
-
+    @stack('scripts')
 </body>
 <footer class="panel-footer navbar-fixed-bottom">
     <div class="container">

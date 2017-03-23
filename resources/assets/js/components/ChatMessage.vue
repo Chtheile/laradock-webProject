@@ -1,8 +1,8 @@
 <template lang="html">
-     <div class="chat-message">
+    <div class="chat-message">
         <p> {{message.message}}</p>
-        <small> {{message.date}}</small>
-        <small>{{message.user}}</small>
+        <small> {{message.created_at}}</small>
+        <small>{{message.user.name}}</small>
      </div>
 </template>
 

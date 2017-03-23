@@ -8,7 +8,7 @@ window._ = require('lodash');
  */
 
 window.$ = window.jQuery = require('jquery');
-
+require( 'datatables.net' )();
 require('bootstrap-sass');
 
 /**
@@ -38,9 +38,12 @@ window.axios.defaults.headers.common = {
  * allows your team to easily build robust real-time web applications.
  */
 
-// import Echo from "laravel-echo"
 
-// window.Echo = new Echo({
-//     broadcaster: 'pusher',
-//     key: 'your-pusher-key'
-// });
+ import Echo from "laravel-echo"
+
+window.Pusher = require('pusher-js');
+
+ window.Echo = new Echo({
+     broadcaster: 'pusher',
+     key: '0803460d56a5c26c13ad',
+      });

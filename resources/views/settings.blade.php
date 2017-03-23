@@ -9,7 +9,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">{{$name}}</div>
 
-                    <div class="panel-body">
+                    <div id="settings" class="panel-body">
 
 
                     </div>

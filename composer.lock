@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "69879e406a43af317353b191656aafd5",
-    "content-hash": "96098e473b028cdb2529580554a1ae3e",
+    "hash": "639dbdf8b8c28f33012d8bc97a2c4636",
+    "content-hash": "b5500cd356b43fd615754e2f1560834b",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -238,16 +238,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v5.4.15",
+            "version": "v5.4.16",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "ecc6468b8af30b77566a8519ce8898740ef691d7"
+                "reference": "6cf379ec34d08bcdc9c7183e369a8fdf04ade80d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/ecc6468b8af30b77566a8519ce8898740ef691d7",
-                "reference": "ecc6468b8af30b77566a8519ce8898740ef691d7",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/6cf379ec34d08bcdc9c7183e369a8fdf04ade80d",
+                "reference": "6cf379ec34d08bcdc9c7183e369a8fdf04ade80d",
                 "shasum": ""
             },
             "require": {
@@ -363,7 +363,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2017-03-02 14:41:40"
+            "time": "2017-03-21 19:34:41"
         },
         {
             "name": "laravel/tinker",
@@ -425,16 +425,16 @@
         },
         {
             "name": "league/flysystem",
-            "version": "1.0.36",
+            "version": "1.0.37",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem.git",
-                "reference": "d9c1698582dfbfbd092ec9c5c3325f862cdb3297"
+                "reference": "78b5cc4feb61a882302df4fbaf63b7662e5e4ccd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/d9c1698582dfbfbd092ec9c5c3325f862cdb3297",
-                "reference": "d9c1698582dfbfbd092ec9c5c3325f862cdb3297",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/78b5cc4feb61a882302df4fbaf63b7662e5e4ccd",
+                "reference": "78b5cc4feb61a882302df4fbaf63b7662e5e4ccd",
                 "shasum": ""
             },
             "require": {
@@ -504,7 +504,7 @@
                 "sftp",
                 "storage"
             ],
-            "time": "2017-03-18 16:02:30"
+            "time": "2017-03-22 15:43:14"
         },
         {
             "name": "monolog/monolog",
@@ -899,6 +899,50 @@
                 "shell"
             ],
             "time": "2017-03-19 21:40:44"
+        },
+        {
+            "name": "pusher/pusher-php-server",
+            "version": "2.6.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/pusher/pusher-http-php.git",
+                "reference": "7101edc482d1b1de027abadd7a80a0d00222ef08"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/pusher/pusher-http-php/zipball/7101edc482d1b1de027abadd7a80a0d00222ef08",
+                "reference": "7101edc482d1b1de027abadd7a80a0d00222ef08",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "php": ">=5.2"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "lib/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Library for interacting with the Pusher REST API",
+            "homepage": "https://github.com/pusher/pusher-php-server",
+            "keywords": [
+                "events",
+                "php-pusher-server",
+                "publish",
+                "pusher",
+                "realtime",
+                "rest",
+                "trigger"
+            ],
+            "time": "2016-12-22 10:46:28"
         },
         {
             "name": "ramsey/uuid",
@@ -1862,6 +1906,67 @@
                 "environment"
             ],
             "time": "2016-09-01 10:05:43"
+        },
+        {
+            "name": "yajra/laravel-datatables-oracle",
+            "version": "v7.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/yajra/laravel-datatables.git",
+                "reference": "ed5b5908c505f89b815a1ef5bcc7cc3f9731d397"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/yajra/laravel-datatables/zipball/ed5b5908c505f89b815a1ef5bcc7cc3f9731d397",
+                "reference": "ed5b5908c505f89b815a1ef5bcc7cc3f9731d397",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/database": "5.4.*",
+                "illuminate/filesystem": "5.4.*",
+                "illuminate/http": "5.4.*",
+                "illuminate/support": "5.4.*",
+                "illuminate/view": "5.4.*",
+                "php": ">=5.6.4"
+            },
+            "require-dev": {
+                "mockery/mockery": "0.9.*",
+                "orchestra/testbench": "^3.4",
+                "phpunit/phpunit": "~5.7"
+            },
+            "suggest": {
+                "league/fractal": "Transform your api response into something you won't hate.",
+                "yajra/laravel-datatables-buttons": "Plugin for server-side exporting of dataTable.",
+                "yajra/laravel-datatables-html": "Plugin for server-side HTML builder of dataTable."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "7.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Yajra\\Datatables\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Arjay Angeles",
+                    "email": "aqangeles@gmail.com"
+                }
+            ],
+            "description": "jQuery DataTables API for Laravel 4|5",
+            "keywords": [
+                "datatables",
+                "jquery",
+                "laravel"
+            ],
+            "time": "2017-02-23 03:11:23"
         }
     ],
     "packages-dev": [

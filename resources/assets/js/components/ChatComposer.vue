@@ -15,9 +15,11 @@
         methods: {
             sendMessage(){
                this.$emit('messagesent',{
-                  message:  this.messageText,
-                   date:  Date.now(),
-                   user: 'Ch Theile'
+                    message:  this.messageText,
+                    created_at : Date.now(),
+                    user: {
+                      name: $('.navbar-right .dropdown-toggle').text()
+                   }
 
                });
                 this.messageText = '';

@@ -26,18 +26,9 @@ Vue.component('chat-composer', require('./components/ChatComposer.vue'));
 const app = new Vue({
     el: '#app',
     data:{
-        messages: [
-            {
-                message: 'Hey',
-                date: "12.12.12 14.12",
-                user: "Ch Theile"
-            },
-            {
-                message: 'Hey !!',
-                date: "12.12.12 14.12",
-                user: "Ch Theile"
-            }
-        ]
+        messages: [],
+        usersInRoom:[]
+
     },
     methods: {
         addMessage(message) {
@@ -45,9 +36,32 @@ const app = new Vue({
             this.messages.push(message)
 
             // Persist to the database etc
-
+            axios.post('/api/messages',message).then(response=> {
+               // console.log(response);
+            });
         }
+    },
+    created(){
+        axios.get('/api/messages').then(response => {
+           this.messages =  response.data
+        });
+
+        Echo.join('chatroom')
+            .here((users) => {
+                this.usersInRoom = users;
+                console.log(users.length);
+            })
+            //.joining()
+            //.leaving()
+            .listen('MessagePosted',(e) =>{
+                console.log(e);
+            });
+
     }
+
   });
 
+const settings = new Vue({
+  el:'#settings'
+});
 
