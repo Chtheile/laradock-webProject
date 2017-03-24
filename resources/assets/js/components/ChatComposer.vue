@@ -6,27 +6,28 @@
 </template>
 
 <script>
-    export default{
-        data(){
-            return{
-                messageText: ''
-            }
-        },
-        methods: {
-            sendMessage(){
-               this.$emit('messagesent',{
-                    message:  this.messageText,
-                    created_at : Date.now(),
-                    user: {
-                      name: $('.navbar-right .dropdown-toggle').text()
-                   }
+/*jshint esversion: 6 */
+export default {
+    data() {
+        return {
+            messageText: ''
+        };
+    },
+    methods: {
+        sendMessage() {
+            this.$emit('messagesent', {
+                message: this.messageText,
+                created_at: Date.now(),
+                user: {
+                    name: $('.navbar-right .dropdown-toggle').text()
+                }
 
-               });
-                this.messageText = '';
-            }
+            });
+            this.messageText = '';
         }
-
     }
+
+};
 </script>
 
 <style lang="css" >

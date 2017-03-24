@@ -9,8 +9,8 @@
 </template>
 
 <script>
-export default{
-   props: ['messages']
+export default {
+    props: ['messages']
 }
 </script>
 

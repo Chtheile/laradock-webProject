@@ -8,7 +8,7 @@ window._ = require('lodash');
  */
 
 window.$ = window.jQuery = require('jquery');
-require( 'datatables.net' )();
+//require( 'datatables.net' )();
 require('bootstrap-sass');
 
 /**

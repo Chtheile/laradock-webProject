@@ -15,6 +15,7 @@ Route::get('/', function () {
     return view('welcome');
     });
 
+
 Route::get('datatables', 'DatatablesController@getIndex')
     ->name('datatables');
 Route::get('datatables.data', 'DatatablesController@getAddEditRemoveColumnData')
