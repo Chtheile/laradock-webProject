@@ -38,8 +38,11 @@ Route::get('/settings',function (){
     return view('settings',['name' => 'Settings']);
 })->middleware('auth');
 
+Route::get('/neueFrage',function (){
+    return view('neueFrage',['name' => 'Settings']);
+})->middleware('auth');
+
 //chat Route
 Route::get('/chat', function (){
     return view('chat');
 })->middleware('auth');
-

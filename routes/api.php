@@ -34,9 +34,7 @@ Route::post('/messages',function (){
     ]);
 
     // Announce that a new message has been posted
-    broadcast(new MessagePosted($message,$user))->toOthers();
+    //abroadcast(new MessagePosted($message,$user))->toOthers();
 
     return ['status' => 'OK'];
 })->middleware('auth');
-
-

@@ -60,16 +60,22 @@ export default {
     data() {
         return {
             formErrors:{},
-            username: 'test',
-            name:'test',
-            email: 'test',
-            password : 'test'
+           user: {
+             username: 'NewNAme',
+             name:'Tewtst ste',
+             email: 'test.test@best.de',
+             password : 'testettzZ',
+           }
+
         };
     },
     methods: {
         createItem() {
-          console.log('Test');
-          console.log(this.username);
+          console.log('Test')
+
+          axios.post('/register', this.user).then(response => {
+              console.log(response);
+          });
 
         }
 
