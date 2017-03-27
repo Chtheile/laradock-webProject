@@ -11573,63 +11573,63 @@ Vue.component('create-user-modal', __webpack_require__(47));
 
 var app = new Vue({
 
-    el: '#app',
-    data: {
-        messages: [],
-        usersInRoom: []
+  el: '#app',
+  data: {
+    messages: [],
+    usersInRoom: []
 
-    },
-    methods: {
-        addMessage: function addMessage(message) {
-            // add to existing messages
-            this.messages.push(message);
+  },
+  methods: {
+    addMessage: function addMessage(message) {
+      // add to existing messages
+      this.messages.push(message);
 
-            // Persist to the database etc
-            axios.post('/api/messages', message).then(function (response) {
-                console.log(response);
-            });
-        }
-    },
-    created: function created() {
-        var _this = this;
-
-        axios.get('/api/messages').then(function (response) {
-            _this.messages = response.data;
-        });
-
-        //  Echo.join('chatroom')
-        //    .here((users) => {
-        //      this.usersInRoom = users;
-        //    console.log(users.length);
-        //  })
-        //.joining()
-        //.leaving()
-        //.listen('MessagePosted', (e) => {
-        //      console.log(e);
-        //  });
+      // Persist to the database etc
+      axios.post('/api/messages', message).then(function (response) {
+        console.log(response);
+      });
     }
+  },
+  created: function created() {
+    var _this = this;
+
+    axios.get('/api/messages').then(function (response) {
+      _this.messages = response.data;
+    });
+
+    //  Echo.join('chatroom')
+    //    .here((users) => {
+    //      this.usersInRoom = users;
+    //    console.log(users.length);
+    //  })
+    //.joining()
+    //.leaving()
+    //.listen('MessagePosted', (e) => {
+    //      console.log(e);
+    //  });
+  }
 });
 
 var app2 = new Vue({
-    el: '#app-2',
-    data: {
-        formErrors: [],
-        newUser: {}
+  el: '#app-2',
+  data: {
+    formErrors: [],
+    newUser: {}
 
-    },
+  },
 
-    methods: {
-        createItem: function createItem() {
-            console.log(this.newUser);
+  methods: {
+    createItem: function createItem() {
+      console.log(this.newUser);
 
-            //   var input = this.newUser;
-            // axios.post('/api/messages',input).then(response=> {
+      //   var input = this.newUser;
+      // axios.post('/api/messages',input).then(response=> {
 
-            // console.log(response);
-            // });
+      // console.log(response);
+      // });
 
-        }
     }
+  }
 });
 
 /***/ }),
@@ -12639,10 +12639,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     methods: {
         createItem: function createItem() {
+            var _this = this;
+
             console.log('Test');
 
-            axios.post('/register', this.user).then(function (response) {
+            axios.post('/api/adduser', this.user).then(function (response) {
                 console.log(response);
+
+                _this.formErrors = response.data;
+                //console.log(this.formErrors['username']);
+                console.log(response.data);
             });
         }
     }
@@ -15093,28 +15099,28 @@ if (typeof jQuery === 'undefined') {
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)();
-exports.push([module.i, "\n.chat-log .chat-message:nth-child(even){\n    background-color: #ccc;\n}\n.empty {\n    padding: 1rem;\n    text-align: center;\n}\n", ""]);
+exports.push([module.i, "\n.settings {\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\n}\n.settings input{\r\n    -webkit-box-flex: 1;\r\n        -ms-flex: 1 auto;\r\n            flex: 1 auto;\n}\n.settings button {\r\n        border-radius: 0;\n}\r\n", ""]);
 
 /***/ }),
 /* 40 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)();
-exports.push([module.i, "\n.chat-message {\n    padding: 1rem;\n}\n.chat-message >p {\n        margin-bottom: .5rem;\n}\n", ""]);
+exports.push([module.i, "\n.chat-composer {\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\n}\n.chat-composer input{\r\n    -webkit-box-flex: 1;\r\n        -ms-flex: 1 auto;\r\n            flex: 1 auto;\n}\n.chat-composer button {\r\n        border-radius: 0;\n}\r\n", ""]);
 
 /***/ }),
 /* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)();
-exports.push([module.i, "\n.settings {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n}\n.settings input{\n    -webkit-box-flex: 1;\n        -ms-flex: 1 auto;\n            flex: 1 auto;\n}\n.settings button {\n        border-radius: 0;\n}\n", ""]);
+exports.push([module.i, "\n.chat-message {\r\n    padding: 1rem;\n}\n.chat-message >p {\r\n        margin-bottom: .5rem;\n}\r\n", ""]);
 
 /***/ }),
 /* 42 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)();
-exports.push([module.i, "\n.chat-composer {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n}\n.chat-composer input{\n    -webkit-box-flex: 1;\n        -ms-flex: 1 auto;\n            flex: 1 auto;\n}\n.chat-composer button {\n        border-radius: 0;\n}\n", ""]);
+exports.push([module.i, "\n.chat-log .chat-message:nth-child(even){\n    background-color: #ccc;\n}\n.empty {\n    padding: 1rem;\n    text-align: center;\n}\n", ""]);
 
 /***/ }),
 /* 43 */
@@ -32214,19 +32220,19 @@ exports.push([module.i, "\n.chat-composer {\n    display: -webkit-box;\n    disp
 
 
 /* styles */
-__webpack_require__(55)
+__webpack_require__(53)
 
 var Component = __webpack_require__(2)(
   /* script */
   __webpack_require__(33),
   /* template */
-  __webpack_require__(51),
+  __webpack_require__(49),
   /* scopeId */
   null,
   /* cssModules */
   null
 )
-Component.options.__file = "/Users/ChTheile/Documents/webStuffnew/laradock-webProject/resources/assets/js/components/ChatComposer.vue"
+Component.options.__file = "/var/www/resources/assets/js/components/ChatComposer.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] ChatComposer.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -32237,9 +32243,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-f08acd4a", Component.options)
+    hotAPI.createRecord("data-v-3ea68cd7", Component.options)
   } else {
-    hotAPI.reload("data-v-f08acd4a", Component.options)
+    hotAPI.reload("data-v-3ea68cd7", Component.options)
   }
 })()}
 
@@ -32252,19 +32258,19 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(52)
+__webpack_require__(55)
 
 var Component = __webpack_require__(2)(
   /* script */
   __webpack_require__(34),
   /* template */
-  __webpack_require__(48),
+  __webpack_require__(51),
   /* scopeId */
   null,
   /* cssModules */
   null
 )
-Component.options.__file = "/Users/ChTheile/Documents/webStuffnew/laradock-webProject/resources/assets/js/components/ChatLog.vue"
+Component.options.__file = "/var/www/resources/assets/js/components/ChatLog.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] ChatLog.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -32275,9 +32281,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-3f622459", Component.options)
+    hotAPI.createRecord("data-v-7472f35d", Component.options)
   } else {
-    hotAPI.reload("data-v-3f622459", Component.options)
+    hotAPI.reload("data-v-7472f35d", Component.options)
   }
 })()}
 
@@ -32290,19 +32296,19 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(53)
+__webpack_require__(54)
 
 var Component = __webpack_require__(2)(
   /* script */
   __webpack_require__(35),
   /* template */
-  __webpack_require__(49),
+  __webpack_require__(50),
   /* scopeId */
   null,
   /* cssModules */
   null
 )
-Component.options.__file = "/Users/ChTheile/Documents/webStuffnew/laradock-webProject/resources/assets/js/components/ChatMessage.vue"
+Component.options.__file = "/var/www/resources/assets/js/components/ChatMessage.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] ChatMessage.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -32313,9 +32319,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-4cd2e11c", Component.options)
+    hotAPI.createRecord("data-v-41c6e3c0", Component.options)
   } else {
-    hotAPI.reload("data-v-4cd2e11c", Component.options)
+    hotAPI.reload("data-v-41c6e3c0", Component.options)
   }
 })()}
 
@@ -32328,19 +32334,19 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(54)
+__webpack_require__(52)
 
 var Component = __webpack_require__(2)(
   /* script */
   __webpack_require__(36),
   /* template */
-  __webpack_require__(50),
+  __webpack_require__(48),
   /* scopeId */
   null,
   /* cssModules */
   null
 )
-Component.options.__file = "/Users/ChTheile/Documents/webStuffnew/laradock-webProject/resources/assets/js/components/CreateUserModal.vue"
+Component.options.__file = "/var/www/resources/assets/js/components/CreateUserModal.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] CreateUserModal.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -32351,9 +32357,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-5a431993", Component.options)
+    hotAPI.createRecord("data-v-2626a497", Component.options)
   } else {
-    hotAPI.reload("data-v-5a431993", Component.options)
+    hotAPI.reload("data-v-2626a497", Component.options)
   }
 })()}
 
@@ -32362,54 +32368,6 @@ module.exports = Component.exports
 
 /***/ }),
 /* 48 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "chat-log"
-  }, [_vm._l((_vm.messages), function(message) {
-    return _c('chat-message', {
-      attrs: {
-        "message": message
-      }
-    })
-  }), _vm._v(" "), _c('div', {
-    directives: [{
-      name: "show",
-      rawName: "v-show",
-      value: (_vm.messages.lenght === 0),
-      expression: "messages.lenght === 0"
-    }],
-    staticClass: "empty"
-  }, [_vm._v("\n        Nothing here yet!\n    ")])], 2)
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-3f622459", module.exports)
-  }
-}
-
-/***/ }),
-/* 49 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "chat-message"
-  }, [_c('p', [_vm._v(" " + _vm._s(_vm.message.message))]), _vm._v(" "), _c('small', [_vm._v(" " + _vm._s(_vm.message.created_at))]), _vm._v(" "), _c('small', [_vm._v(_vm._s(_vm.message.user.name))])])
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-4cd2e11c", module.exports)
-  }
-}
-
-/***/ }),
-/* 50 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -32447,25 +32405,25 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     directives: [{
       name: "model",
       rawName: "v-model",
-      value: (_vm.username),
-      expression: "username"
+      value: (_vm.user.username),
+      expression: "user.username"
     }],
     attrs: {
       "type": "text",
       "placeholder": "Start Type"
     },
     domProps: {
-      "value": (_vm.username)
+      "value": (_vm.user.username)
     },
     on: {
       "input": function($event) {
         if ($event.target.composing) { return; }
-        _vm.username = $event.target.value
+        _vm.user.username = $event.target.value
       }
     }
-  }), _vm._v(" "), (_vm.formErrors['title']) ? _c('span', {
+  }), _vm._v(" "), (_vm.formErrors['username']) ? _c('span', {
     staticClass: "error text-danger"
-  }, [_vm._v("@" + _vm._s(_vm.formErrors['title']))]) : _vm._e()]), _vm._v(" "), _c('div', {
+  }, [_vm._v("@" + _vm._s(_vm.formErrors['username']))]) : _vm._e()]), _vm._v(" "), _c('div', {
     staticClass: "from-group"
   }, [_c('label', {
     staticClass: "col-md-4 control-label",
@@ -32476,23 +32434,23 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     directives: [{
       name: "model",
       rawName: "v-model",
-      value: (_vm.name),
-      expression: "name"
+      value: (_vm.user.name),
+      expression: "user.name"
     }],
     attrs: {
       "type": "text",
       "placeholder": "Start Type"
     },
     domProps: {
-      "value": (_vm.name)
+      "value": (_vm.user.name)
     },
     on: {
       "input": function($event) {
         if ($event.target.composing) { return; }
-        _vm.name = $event.target.value
+        _vm.user.name = $event.target.value
       }
     }
-  }), _vm._v(" "), (_vm.formErrors['title']) ? _c('span', {
+  }), _vm._v(" "), (_vm.formErrors['name']) ? _c('span', {
     staticClass: "error text-danger"
   }, [_vm._v("@" + _vm._s(_vm.formErrors['name']))]) : _vm._e()]), _vm._v(" "), _c('div', {
     staticClass: "from-group"
@@ -32505,23 +32463,23 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     directives: [{
       name: "model",
       rawName: "v-model",
-      value: (_vm.email),
-      expression: "email"
+      value: (_vm.user.email),
+      expression: "user.email"
     }],
     attrs: {
       "type": "text",
       "placeholder": "Start Type"
     },
     domProps: {
-      "value": (_vm.email)
+      "value": (_vm.user.email)
     },
     on: {
       "input": function($event) {
         if ($event.target.composing) { return; }
-        _vm.email = $event.target.value
+        _vm.user.email = $event.target.value
       }
     }
-  }), _vm._v(" "), (_vm.formErrors['title']) ? _c('span', {
+  }), _vm._v(" "), (_vm.formErrors['email']) ? _c('span', {
     staticClass: "error text-danger"
   }, [_vm._v("@" + _vm._s(_vm.formErrors['email']))]) : _vm._e()]), _vm._v(" "), _c('div', {
     staticClass: "from-group"
@@ -32534,23 +32492,23 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     directives: [{
       name: "model",
       rawName: "v-model",
-      value: (_vm.password),
-      expression: "password"
+      value: (_vm.user.password),
+      expression: "user.password"
     }],
     attrs: {
       "type": "text",
       "placeholder": "Start Type"
     },
     domProps: {
-      "value": (_vm.password)
+      "value": (_vm.user.password)
     },
     on: {
       "input": function($event) {
         if ($event.target.composing) { return; }
-        _vm.password = $event.target.value
+        _vm.user.password = $event.target.value
       }
     }
-  }), _vm._v(" "), (_vm.formErrors['title']) ? _c('span', {
+  }), _vm._v(" "), (_vm.formErrors['password']) ? _c('span', {
     staticClass: "error text-danger"
   }, [_vm._v("@" + _vm._s(_vm.formErrors['password']))]) : _vm._e()]), _vm._v(" "), _c('div', {
     staticClass: "from-group"
@@ -32598,12 +32556,12 @@ module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-5a431993", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-2626a497", module.exports)
   }
 }
 
 /***/ }),
-/* 51 */
+/* 49 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -32644,7 +32602,55 @@ module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-f08acd4a", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-3ea68cd7", module.exports)
+  }
+}
+
+/***/ }),
+/* 50 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "chat-message"
+  }, [_c('p', [_vm._v(" " + _vm._s(_vm.message.message))]), _vm._v(" "), _c('small', [_vm._v(" " + _vm._s(_vm.message.created_at))]), _vm._v(" "), _c('small', [_vm._v(_vm._s(_vm.message.user.name))])])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-41c6e3c0", module.exports)
+  }
+}
+
+/***/ }),
+/* 51 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "chat-log"
+  }, [_vm._l((_vm.messages), function(message) {
+    return _c('chat-message', {
+      attrs: {
+        "message": message
+      }
+    })
+  }), _vm._v(" "), _c('div', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (_vm.messages.lenght === 0),
+      expression: "messages.lenght === 0"
+    }],
+    staticClass: "empty"
+  }, [_vm._v("\n        Nothing here yet!\n    ")])], 2)
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-7472f35d", module.exports)
   }
 }
 
@@ -32659,13 +32665,13 @@ var content = __webpack_require__(39);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(3)("4b11832a", content, false);
+var update = __webpack_require__(3)("59d5674c", content, false);
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-3f622459!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./ChatLog.vue", function() {
-     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-3f622459!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./ChatLog.vue");
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-2626a497!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./CreateUserModal.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-2626a497!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./CreateUserModal.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -32685,13 +32691,13 @@ var content = __webpack_require__(40);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(3)("02da4781", content, false);
+var update = __webpack_require__(3)("b944d754", content, false);
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-4cd2e11c!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./ChatMessage.vue", function() {
-     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-4cd2e11c!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./ChatMessage.vue");
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-3ea68cd7!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./ChatComposer.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-3ea68cd7!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./ChatComposer.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -32711,13 +32717,13 @@ var content = __webpack_require__(41);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(3)("1977cad0", content, false);
+var update = __webpack_require__(3)("14373d71", content, false);
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-5a431993!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./CreateUserModal.vue", function() {
-     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-5a431993!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./CreateUserModal.vue");
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-41c6e3c0!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./ChatMessage.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-41c6e3c0!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./ChatMessage.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -32737,13 +32743,13 @@ var content = __webpack_require__(42);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(3)("7f998cdc", content, false);
+var update = __webpack_require__(3)("6768e1aa", content, false);
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-f08acd4a!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./ChatComposer.vue", function() {
-     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-f08acd4a!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./ChatComposer.vue");
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-7472f35d!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./ChatLog.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-7472f35d!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./ChatLog.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });

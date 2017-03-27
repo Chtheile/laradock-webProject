@@ -12,35 +12,30 @@
                   <div id="settings">
                       <div class="from-group">
                           <label class="col-md-4 control-label" for="title">Benutzername:</label>
-                          <input type="text" placeholder="Start Type" v-model="username">
-                          <span v-if="formErrors['title']" class="error text-danger">@{{ formErrors['title'] }}</span>
+                          <input type="text" placeholder="Start Type" v-model="user.username">
+                          <span v-if="formErrors['username']" class="error text-danger">@{{ formErrors['username'] }}</span>
                       </div>
 
                       <div class="from-group">
                           <label class="col-md-4 control-label" for="title">Name:</label>
-                          <input type="text" placeholder="Start Type" v-model="name">
-                          <span v-if="formErrors['title']" class="error text-danger">@{{ formErrors['name'] }}</span>
+                          <input type="text" placeholder="Start Type" v-model="user.name">
+                          <span v-if="formErrors['name']" class="error text-danger">@{{ formErrors['name'] }}</span>
                       </div>
 
                       <div class="from-group">
                           <label class="col-md-4 control-label"  for="title">E-Mail:</label>
-                          <input type="text" placeholder="Start Type" v-model="email">
-                          <span v-if="formErrors['title']" class="error text-danger">@{{ formErrors['email'] }}</span>
+                          <input type="text" placeholder="Start Type" v-model="user.email">
+                          <span v-if="formErrors['email']" class="error text-danger">@{{ formErrors['email'] }}</span>
                       </div>
 
                       <div  class="from-group">
                           <label class="col-md-4 control-label" for="title">Password:</label>
-                          <input type="text" placeholder="Start Type" v-model="password">
-                          <span v-if="formErrors['title']" class="error text-danger">@{{ formErrors['password'] }}</span>
+                          <input type="text" placeholder="Start Type" v-model="user.password">
+                          <span v-if="formErrors['password']" class="error text-danger">@{{ formErrors['password'] }}</span>
                       </div>
-                          <div  class="from-group">
-                      <div class="pull-left">
+                      <div  class="from-group">
                           <button type="button" class="btn btn-danger" data-dismiss="modal" aria-label="Close">Abbrechen</button>
-                      </div>
-                      <div class="pull-right">
                           <button class="btn btn-primary" @click="createItem">Anlegen</button>
-                      </div>
-
                     </div>
                 </div>
                 </div>
@@ -71,10 +66,14 @@ export default {
     },
     methods: {
         createItem() {
-          console.log('Test')
+          console.log('Test');
 
-          axios.post('/register', this.user).then(response => {
+          axios.post('/api/adduser', this.user).then(response => {
               console.log(response);
+
+              this.formErrors = response.data;
+              //console.log(this.formErrors['username']);
+              console.log(response.data);
           });
 
         }

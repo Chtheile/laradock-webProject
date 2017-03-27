@@ -18,15 +18,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('manage-user', 'VueUserController@manageVue');
-Route::resource('vueuser','VueUserController');
-
-
-Route::get('/messages',function (){
+Route::get('messages',function (){
     return App\Message::with('user')->get();
 })->middleware('auth');
 
-Route::post('/messages',function (){
+Route::post('messages',function (){
     $user = Auth::user();
 
    $message= $user->messages()->create([
@@ -38,3 +34,5 @@ Route::post('/messages',function (){
 
     return ['status' => 'OK'];
 })->middleware('auth');
+
+Route::post('adduser', 'UserController@addUser')->middleware('auth');
