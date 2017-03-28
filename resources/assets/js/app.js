@@ -50,16 +50,16 @@
               this.messages = response.data;
           });
 
-        //  Echo.join('chatroom')
+          //  Echo.join('chatroom')
           //    .here((users) => {
-            //      this.usersInRoom = users;
-              //    console.log(users.length);
-            //  })
-              //.joining()
-              //.leaving()
-              //.listen('MessagePosted', (e) => {
-            //      console.log(e);
-            //  });
+          //      this.usersInRoom = users;
+          //    console.log(users.length);
+          //  })
+          //.joining()
+          //.leaving()
+          //.listen('MessagePosted', (e) => {
+          //      console.log(e);
+          //  });
 
       }
 

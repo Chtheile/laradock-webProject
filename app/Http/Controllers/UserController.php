@@ -16,26 +16,21 @@ class UserController extends Controller
     */
     public function addUser(Request $request)
     {
-        $tmp = $request->all();
-        Log::info($request);
-        Log::info($tmp);
 
         $validator = Validator::make($request->all(), [
-          'name' => 'required|max:1',
+          'name' => 'required|max:2',
         ]);
         $errors = $validator->errors();
 
-        Log::info($errors);
-
         if ($validator->fails()) {
-          Log::info('False');
+          Log::info($errors);
+          return $errors;
 
         } else {
-          Log::info('True');
-            return $errors;
+          $Response =   User::create($request->all());
+            Log::info($Response);
+            return $Response;
         }
-
-
 
 
 /*
