@@ -17,15 +17,12 @@
                       </div>
 
                       <div id="app-2">
-                        @if ($errors->has('name'))
-                            <span class="help-block">
-                                <strong>{{ $errors->first('name') }}</strong>
-                            </span>
-                        @endif
+
                         <create-user-modal></create-user-modal>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+  </div>
 @endsection
