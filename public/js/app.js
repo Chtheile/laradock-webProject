@@ -12620,6 +12620,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /*jshint esversion: 6 */
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -12646,9 +12647,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
                 if (response.data.username == _this.user.username) {
                     console.log('true');
+
                     $("#create-item").modal('hide');
                 } else {
                     console.log('False');
+                    _this.user = {
+                        'username': '',
+                        'name': '',
+                        'email': '',
+                        'password': ''
+                    };
                 }
                 //
             });
@@ -15102,7 +15110,7 @@ if (typeof jQuery === 'undefined') {
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)();
-exports.push([module.i, "\n.settings {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n}\n.settings input {\n    -webkit-box-flex: 1;\n        -ms-flex: 1 auto;\n            flex: 1 auto;\n}\n.settings button {\n    border-radius: 0;\n}\n", ""]);
+exports.push([module.i, "\n.modal-body .form-horizontal .col-sm-2,\n.modal-body .form-horizontal .col-sm-10 {\n    width: 100%\n}\n.modal-body .form-horizontal .control-label {\n    text-align: left;\n}\n.modal-body .form-horizontal .col-sm-offset-2 {\n    margin-left: 15px;\n}\n", ""]);
 
 /***/ }),
 /* 40 */
@@ -32378,7 +32386,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "modal fade",
     attrs: {
       "id": "create-item",
-      "tabindex": "-1",
       "role": "dialog",
       "aria-labelledby": "myModalLabel"
     }
@@ -32392,19 +32399,20 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_vm._m(0), _vm._v(" "), _c('div', {
     staticClass: "modal-body"
   }, [_c('div', {
-    staticClass: "create-user-modal"
-  }, [_c('div', {
+    staticClass: "form-horizontal",
     attrs: {
       "id": "settings"
     }
   }, [_c('div', {
     staticClass: "from-group"
   }, [_c('label', {
-    staticClass: "col-md-4 control-label",
+    staticClass: "col-sm-2 control-label",
     attrs: {
-      "for": "title"
+      "for": "username"
     }
-  }, [_vm._v("Benutzername:")]), _vm._v(" "), _c('input', {
+  }, [_vm._v("Benutzername:  ")]), _vm._v(" "), _c('div', {
+    staticClass: "col-sm-10"
+  }, [_c('input', {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -32414,6 +32422,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "form-control",
     attrs: {
       "type": "text",
+      "id": "username",
       "placeholder": "Start Type"
     },
     domProps: {
@@ -32427,14 +32436,16 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }), _vm._v(" "), (_vm.formErrors['username']) ? _c('span', {
     staticClass: "error text-danger"
-  }, [_vm._v(_vm._s(_vm.formErrors['username']))]) : _vm._e()]), _vm._v(" "), _c('div', {
+  }, [_vm._v(_vm._s(_vm.formErrors['username']))]) : _vm._e()])]), _vm._v(" "), _c('div', {
     staticClass: "from-group"
   }, [_c('label', {
-    staticClass: "col-md-4 control-label",
+    staticClass: "col-sm-2 control-label",
     attrs: {
       "for": "title"
     }
-  }, [_vm._v("Name:")]), _vm._v(" "), _c('input', {
+  }, [_vm._v("Name:")]), _vm._v(" "), _c('div', {
+    staticClass: "col-sm-10"
+  }, [_c('input', {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -32456,15 +32467,19 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }
     }
   }), _vm._v(" "), (_vm.formErrors['name']) ? _c('span', {
-    staticClass: "help-block text-danger"
-  }, [_c('strong', [_vm._v(_vm._s(_vm.formErrors['name']))])]) : _vm._e()]), _vm._v(" "), _c('div', {
+    staticClass: "help-block"
+  }, [_c('strong', {
+    staticClass: "text-danger"
+  }, [_vm._v(_vm._s(_vm.formErrors['name']))])]) : _vm._e()])]), _vm._v(" "), _c('div', {
     staticClass: "from-group"
   }, [_c('label', {
-    staticClass: "col-md-4 control-label",
+    staticClass: "col-sm-2 control-label",
     attrs: {
       "for": "title"
     }
-  }, [_vm._v("E-Mail:")]), _vm._v(" "), _c('input', {
+  }, [_vm._v("E-Mail:")]), _vm._v(" "), _c('div', {
+    staticClass: "col-sm-10"
+  }, [_c('input', {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -32487,14 +32502,16 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }), _vm._v(" "), (_vm.formErrors['email']) ? _c('span', {
     staticClass: "error text-danger"
-  }, [_vm._v(_vm._s(_vm.formErrors['email']))]) : _vm._e()]), _vm._v(" "), _c('div', {
+  }, [_vm._v(_vm._s(_vm.formErrors['email']))]) : _vm._e()])]), _vm._v(" "), _c('div', {
     staticClass: "from-group"
   }, [_c('label', {
-    staticClass: "col-md-4 control-label",
+    staticClass: "col-sm-2 control-label",
     attrs: {
       "for": "title"
     }
-  }, [_vm._v("Password:")]), _vm._v(" "), _c('input', {
+  }, [_vm._v("Password:")]), _vm._v(" "), _c('div', {
+    staticClass: "col-sm-10"
+  }, [_c('input', {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -32517,10 +32534,10 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }), _vm._v(" "), (_vm.formErrors['password']) ? _c('span', {
     staticClass: "error text-danger"
-  }, [_vm._v(_vm._s(_vm.formErrors['password']))]) : _vm._e()]), _vm._v(" "), _c('div', {
-    staticClass: "from-group"
+  }, [_vm._v(_vm._s(_vm.formErrors['password']))]) : _vm._e()])])])]), _vm._v(" "), _c('div', {
+    staticClass: "modal-footer"
   }, [_c('button', {
-    staticClass: "btn btn-danger",
+    staticClass: "btn btn-default",
     attrs: {
       "type": "button",
       "data-dismiss": "modal",
@@ -32531,7 +32548,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "click": _vm.createItem
     }
-  }, [_vm._v("Anlegen")])])])])])])])])
+  }, [_vm._v("Anlegen")])])])])])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "modal-header"
@@ -32540,7 +32557,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "type": "button",
       "data-dismiss": "modal",
-      "aria-label": "Close"
+      "aria-label": "Close",
+      "role": "dialog"
     }
   }, [_c('span', {
     attrs: {

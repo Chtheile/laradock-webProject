@@ -1,55 +1,56 @@
 <template lang="html">
-  <div class="modal fade" id="create-item" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal fade" id="create-item" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" role="dialog"><span aria-hidden="true">×</span></button>
           <h4 class="modal-title" id="myModalLabel">Benutzer anlegen</h4>
         </div>
         <div class="modal-body">
-                <div class="create-user-modal">
-                  <div id="settings">
-                      <div class="from-group">
-                          <label class="col-md-4 control-label" for="title">Benutzername:</label>
-                          <input class="form-control" type="text" placeholder="Start Type" v-model="user.username">
-                          <span v-if="formErrors['username']" class="error text-danger">{{ formErrors['username'] }}</span>
-                      </div>
+          <div id="settings" class="form-horizontal">
+              <div class="from-group">
+                  <label class="col-sm-2 control-label" for="username">Benutzername:  </label>
 
-                      <div class="from-group">
-                          <label class="col-md-4 control-label" for="title">Name:</label>
-                          <input class="form-control" type="text" placeholder="Start Type" v-model="user.name">
+                <div class="col-sm-10">
+                  <input class="form-control" type="text" id="username" placeholder="Start Type" v-model="user.username">
+                  <span v-if="formErrors['username']" class="error text-danger">{{ formErrors['username'] }}</span>
+                </div>
+              </div>
 
-                              <span v-if="formErrors['name']" class="help-block text-danger">
-                                  <strong>{{ formErrors['name']}}</strong>
-                              </span>
+              <div class="from-group">
+                  <label class="col-sm-2 control-label" for="title">Name:</label>
+                    <div class="col-sm-10">
+                      <input class="form-control" type="text" placeholder="Start Type" v-model="user.name">
+                      <span v-if="formErrors['name']" class="help-block">
+                          <strong class="text-danger">{{ formErrors['name']}}</strong>
+                      </span>
+                  </div>
+              </div>
 
+              <div class="from-group">
+                  <label class="col-sm-2 control-label"  for="title">E-Mail:</label>
+                  <div class="col-sm-10">
+                    <input class="form-control" type="text" placeholder="Start Type" v-model="user.email">
+                    <span v-if="formErrors['email']" class="error text-danger">{{ formErrors['email'] }}</span>
+                  </div>
+              </div>
 
-                      </div>
-
-                      <div class="from-group">
-                          <label class="col-md-4 control-label"  for="title">E-Mail:</label>
-                          <input class="form-control" type="text" placeholder="Start Type" v-model="user.email">
-                          <span v-if="formErrors['email']" class="error text-danger">{{ formErrors['email'] }}</span>
-                      </div>
-
-                      <div  class="from-group">
-                          <label class="col-md-4 control-label" for="title">Password:</label>
-                          <input class="form-control" type="text" placeholder="Start Type" v-model="user.password">
-                          <span v-if="formErrors['password']" class="error text-danger">{{ formErrors['password'] }}</span>
-                      </div>
-                      <div  class="from-group">
-                          <button type="button" class="btn btn-danger" data-dismiss="modal" aria-label="Close">Abbrechen</button>
-                          <button class="btn btn-primary" @click="createItem" >Anlegen</button>
+              <div  class="from-group">
+                  <label class="col-sm-2 control-label" for="title">Password:</label>
+                    <div class="col-sm-10">
+                      <input class="form-control" type="text" placeholder="Start Type" v-model="user.password">
+                      <span v-if="formErrors['password']" class="error text-danger">{{ formErrors['password'] }}</span>
                     </div>
-                </div>
-                </div>
-            </div>
-
+              </div>
           </div>
-
         </div>
-
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal" aria-label="Close">Abbrechen</button>
+            <button class="btn btn-primary" @click="createItem" >Anlegen</button>
+          </div>
       </div>
+    </div>
+</div>
 
 </template>
 
@@ -72,13 +73,21 @@
             createItem() {
                 axios.post('/api/adduser', this.user).then(response => {
 
-                    this.formErrors=response.data;
+                    this.formErrors = response.data;
 
                     if (response.data.username == this.user.username) {
                         console.log('true');
+
                         $("#create-item").modal('hide');
                     } else {
                         console.log('False');
+                        this.user = {
+                            'username': '',
+                            'name': '',
+                            'email': '',
+                            'password': ''
+                        };
+
                     }
                     //
                 });
@@ -89,15 +98,15 @@
 </script>
 
 <style lang="css">
-    .settings {
-        display: flex;
+    .modal-body .form-horizontal .col-sm-2,
+    .modal-body .form-horizontal .col-sm-10 {
+        width: 100%
     }
 
-    .settings input {
-        flex: 1 auto;
+    .modal-body .form-horizontal .control-label {
+        text-align: left;
     }
-
-    .settings button {
-        border-radius: 0;
+    .modal-body .form-horizontal .col-sm-offset-2 {
+        margin-left: 15px;
     }
 </style>
