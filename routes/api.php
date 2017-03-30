@@ -22,6 +22,11 @@ Route::get('messages',function (){
     return App\Message::with('user')->get();
 })->middleware('auth');
 
+Route::get('users',function (){
+    return App\User::latest()->paginate(5);
+})->middleware('auth');
+
+
 Route::post('messages',function (){
     $user = Auth::user();
 

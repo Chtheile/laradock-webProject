@@ -7,10 +7,11 @@
           <h4 class="modal-title" id="myModalLabel">Benutzer anlegen</h4>
         </div>
         <div class="modal-body">
+          <div class="row" >
           <div id="settings" class="form-horizontal">
+
               <div class="from-group">
                   <label class="col-sm-2 control-label" for="username">Benutzername:  </label>
-
                 <div class="col-sm-10">
                   <input class="form-control" type="text" id="username" placeholder="Start Type" v-model="user.username">
                   <span v-if="formErrors['username']" class="error text-danger">{{ formErrors['username'] }}</span>
@@ -42,12 +43,14 @@
                       <span v-if="formErrors['password']" class="error text-danger">{{ formErrors['password'] }}</span>
                     </div>
               </div>
+
           </div>
         </div>
+      </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal" aria-label="Close">Abbrechen</button>
             <button class="btn btn-primary" @click="createItem" >Anlegen</button>
-          </div>
+        </div>
       </div>
     </div>
 </div>
@@ -61,10 +64,10 @@
             return {
                 formErrors: {},
                 user: {
-                    username: 'NewNAme',
-                    name: 'Tewtst ste',
-                    email: 'test.test@best.de',
-                    password: 'testettzZ',
+                    username: '',
+                    name: '',
+                    email: '',
+                    password: '',
                 }
 
             };
@@ -77,16 +80,18 @@
 
                     if (response.data.username == this.user.username) {
                         console.log('true');
-
+                          this.$emit('update', 1);
+                          this.user = {
+                              'username': '',
+                              'name': '',
+                              'email': '',
+                              'password': ''
+                          };
+                          this.formErrors = {};
                         $("#create-item").modal('hide');
                     } else {
                         console.log('False');
-                        this.user = {
-                            'username': '',
-                            'name': '',
-                            'email': '',
-                            'password': ''
-                        };
+
 
                     }
                     //
