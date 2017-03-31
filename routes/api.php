@@ -3,6 +3,8 @@
 use Illuminate\Http\Request;
 
 use App\Events\MessagePosted;
+
+use App\Kurse;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -31,13 +33,23 @@ Route::post('messages',function (){
     $user = Auth::user();
 
    $message= $user->messages()->create([
-        'message' => request()-> get('message')
+        'message' => request()->get('message')
     ]);
-
     // Announce that a new message has been posted
     //abroadcast(new MessagePosted($message,$user))->toOthers();
-
     return ['status' => 'OK'];
 })->middleware('auth');
 
 Route::post('adduser', 'UserController@addUser')->middleware('auth');
+
+Route::get('testKurse', function (){
+
+  $user = Auth::user();
+  $kurse = new Kurse (['name'=> 'Test','description' => 'Test kurs']);
+
+  Log::info($user);
+
+  $test = $user->kurses()->save($kurse);
+  Log::info($test);
+  return ['status' => 'OK'];
+})->middleware('auth');

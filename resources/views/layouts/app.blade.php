@@ -21,7 +21,7 @@
     </script>
 </head>
 <body>
-    <div >
+    <div id="app" >
         <nav class="navbar navbar-default navbar-static-top">
             <div class="container">
                 <div class="navbar-header">
@@ -45,7 +45,6 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
                         &nbsp;<li><a href=>Test</a> </li>
-
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -61,7 +60,7 @@
                               </a>
                               <ul class="dropdown-menu" role="menu">
                                 <li>
-                                    <a href="{{url('uebersicht')}}">
+                                    <a href="#" @click="currentView='example'">
                                         Übersicht
                                     </a>
                                 </li>
@@ -71,7 +70,13 @@
                               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                   Kapitel <span class="caret"></span>
                               </a>
-
+                              <ul class="dropdown-menu" role="menu">
+                                <li>
+                                    <a href="#" @click="currentView='chat-composer'">
+                                        Übersicht
+                                    </a>
+                                </li>
+                              </ul>
                             </li>
                             <li class="dropdown">
                               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -79,8 +84,8 @@
                               </a>
                               <ul class="dropdown-menu" role="menu">
                                 <li>
-                                    <a href="{{url('neueFrage')}}">
-                                        neue Frage erstellen
+                                    <a href="#"  @click="currentView='user-control'">
+                                        Übersicht
                                     </a>
                                 </li>
                               </ul>

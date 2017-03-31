@@ -31,7 +31,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Message::class);
     }
+    public function kurses(){
+       return $this->belongsToMany('App\Kurse','user_kurse')->withTimestamps();
+    }
 
-  
 
 }

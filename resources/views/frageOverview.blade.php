@@ -8,7 +8,7 @@
                 <div class="panel-heading">{{$name}}</div>
 
                 <div class="panel-body">
-                  Fragen erstellen
+                  Übersicht
                 </div>
             </div>
         </div>

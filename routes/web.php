@@ -35,12 +35,9 @@ Route::get('home', 'HomeController@index');
 
 //Settings Route
 Route::get('/settings',function (){
-    return view('settings',['name' => 'Settings']);
+    return view('settings');
 })->middleware('auth');
 
-Route::get('/neueFrage',function (){
-    return view('neueFrage',['name' => 'Settings']);
-})->middleware('auth');
 
 //chat Route
 Route::get('/chat', function (){

@@ -27,13 +27,17 @@
 
   Vue.component('user-table', require('./components/UserTable.vue'));
 
+  Vue.component('user-control', require('./components/UserControll.vue'));
+
+  Vue.component('example', require('./components/Example.vue'));
+
   const app = new Vue({
 
       el: '#app',
       data: {
           messages: [],
           usersInRoom: [],
-
+          currentView:'',
       },
       methods: {
           addMessage(message) {
@@ -50,6 +54,7 @@
 
           axios.get('/api/messages').then(response => {
               this.messages = response.data;
+              console.log(response);
           });
           //  Echo.join('chatroom')
           //    .here((users) => {
@@ -66,10 +71,9 @@
   });
 
 
-  var app2 = new Vue({
+/*  var app2 = new Vue({
       el: '#app-2',
       data: {
-          formErrors: [],
           newUser: {},
           users: [],
           pagination: {
@@ -80,6 +84,7 @@
               current_page: 1
           },
           offset: 4,
+          currentView:'',
       },
       computed: {
           isActived: function() {
@@ -114,12 +119,13 @@
               axios.get('/api/users?page=' + page).then(response => {
                   this.users = response.data.data;
                   this.pagination = response.data;
-
+                  console.log(response);
               });
+
           },
           changePage: function(page) {
               this.pagination.current_page = page;
               this.getuserPage(page);
           }
       }
-  });
+  });*/
