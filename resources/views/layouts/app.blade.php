@@ -60,7 +60,7 @@
                               </a>
                               <ul class="dropdown-menu" role="menu">
                                 <li>
-                                    <a href="#" @click="currentView='example'">
+                                    <a href="#" @click="currentView='kurseuebersicht'">
                                         Übersicht
                                     </a>
                                 </li>
@@ -84,7 +84,7 @@
                               </a>
                               <ul class="dropdown-menu" role="menu">
                                 <li>
-                                    <a href="#"  @click="currentView='user-control'">
+                                    <a href="#"  @click="currentView='fragenuebersicht'">
                                         Übersicht
                                     </a>
                                 </li>
@@ -109,7 +109,7 @@
                                         </form>
                                     </li>
                                     <li>
-                                        <a href="{{url('settings')}}">
+                                        <a href="#" @click="currentView='user-control'">
                                             Settings
                                         </a>
                                     </li>

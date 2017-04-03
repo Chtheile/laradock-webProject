@@ -2,38 +2,33 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
-use Illuminate\Support\Facades\Log;
+use App\Kurse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 
-
-class UserController extends Controller
+class KurseController extends Controller
 {
-
-    /**
-
-    */
-    public function addUser(Request $request)
+    //
+    // legt einen Kurs an
+    public function addKurse(Request $request)
     {
 
         $validator = Validator::make($request->all(), [
-          'name' => 'required|max:255',
-          'email' => 'required|email|max:255|unique:users',
-          'username' => 'required|unique:users',
-          'password' => 'required',
+          'name' => 'required|max:255|unique:kurses',
+          'description' => 'required|max:255|',
         ]);
         $errors = $validator->errors();
-
         if ($validator->fails()) {
           Log::info($errors);
           return $errors;
 
         } else {
-          $Response =   User::create($request->all());
+          $Response =   Kurse::create($request->all());
             Log::info($Response);
             return $Response;
         }
     }
+
 
 }

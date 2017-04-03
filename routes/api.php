@@ -15,20 +15,6 @@ use App\Kurse;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
-Route::get('messages',function (){
-    return App\Message::with('user')->get();
-})->middleware('auth');
-
-Route::get('users',function (){
-    return App\User::latest()->paginate(5);
-})->middleware('auth');
-
-
 Route::post('messages',function (){
     $user = Auth::user();
 
@@ -40,7 +26,33 @@ Route::post('messages',function (){
     return ['status' => 'OK'];
 })->middleware('auth');
 
+Route::get('messages',function (){
+    return App\Message::with('user')->get();
+})->middleware('auth');
+
+
+Route::middleware('auth:api')->get('/user', function (Request $request) {
+    return $request->user();
+});
+
+
+// user routes
+Route::get('users',function (){
+    return App\User::latest()->paginate(5);
+})->middleware('auth');
 Route::post('adduser', 'UserController@addUser')->middleware('auth');
+Route::get('usersall',function(){
+  return App\User::all();
+})->middleware('auth');
+
+//kurse routes
+Route::post('addkurse','KurseController@addKurse')->middleware('auth');
+Route::get('kurse',function(){
+  return Kurse::latest()->paginate(5);
+})->middleware('auth');
+
+
+
 
 Route::get('testKurse', function (){
 

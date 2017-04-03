@@ -31,13 +31,19 @@
 
   Vue.component('example', require('./components/Example.vue'));
 
+  Vue.component('fragenuebersicht',require('./components/FragenUebersicht'));
+
+  Vue.component('home',require('./components/Home.vue'));
+
+  Vue.component('kurseuebersicht',require('./components/KurseUebersicht.vue'));
+
   const app = new Vue({
 
       el: '#app',
       data: {
           messages: [],
           usersInRoom: [],
-          currentView:'',
+          currentView:'home',
       },
       methods: {
           addMessage(message) {

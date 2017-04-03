@@ -6,7 +6,7 @@
           <button type="button" class="close" data-dismiss="modal" aria-label="Close" role="dialog"><span aria-hidden="true">×</span></button>
           <h4 class="modal-title" id="myModalLabel">Benutzer anlegen</h4>
         </div>
-        <div class="modal-body">
+          <div class="modal-body">
           <div class="row" >
           <div id="settings" class="form-horizontal">
 
