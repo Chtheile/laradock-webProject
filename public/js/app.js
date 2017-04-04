@@ -12798,6 +12798,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 /*jshint esversion: 6 */
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -12812,6 +12814,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function($) {Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
 //
 //
 //
@@ -13051,7 +13054,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     deleteKurs: function deleteKurs(kurs) {},
     ansicht: function ansicht(kurs) {},
-    zuordnungSpeichern: function zuordnungSpeichern() {}
+    zuordnungSpeichern: function zuordnungSpeichern() {
+      console.log(this.zuordnenKurs);
+      axios.post('/api/kurseuser', this.zuordnenKurs).then(function (response) {
+        console.log('Done');
+      });
+    }
   }
 });
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(4)))
@@ -33739,7 +33747,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_vm._v("Abbrechen")]), _vm._v(" "), _c('button', {
     staticClass: "btn btn-primary",
     on: {
-      "click": _vm.createItem
+      "click": _vm.zuordnungSpeichern
     }
   }, [_vm._v("Speichern")])])])])])])])])])])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -34007,9 +34015,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "panel panel-default"
   }, [_c('div', {
     staticClass: "panel-heading"
-  }, [_vm._v("Dashboard")]), _vm._v(" "), _c('div', {
+  }, [_vm._v("Hindernisrichter in der Vielseitigkeit")]), _vm._v(" "), _c('div', {
     staticClass: "panel-body"
-  }, [_vm._v("\r\n                    You are logged in!\r\n                ")])])])])])
+  }, [_c('div', {
+    staticClass: "pull-left"
+  }, [_c('h4', [_vm._v("Kursverwaltung: ")])])])])])])])
 }]}
 module.exports.render._withStripped = true
 if (false) {

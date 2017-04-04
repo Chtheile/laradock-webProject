@@ -11,6 +11,6 @@ class Kurse extends Model
 
      public function users()
      {
-       return $this->belongsToMana('App\User','user_kurse')->withTimestamps();
+       return $this->belongsToMany('App\User','user_kurse')->withTimestamps();
      }
 }

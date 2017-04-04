@@ -102,7 +102,7 @@
                        </div>
                    </div>
                    <!-- Modal add Kurse close -->
-
+                    <!--Modal Kurse und Benutzer zuordnen -->
                    <div class="modal fade" id="zuordnen" role="dialog" aria-labelledby="myModalLabel">
                      <div class="modal-dialog" role="document">
                        <div class="modal-content">
@@ -132,11 +132,12 @@
                        </div>
                          <div class="modal-footer">
                              <button type="button" class="btn btn-default" data-dismiss="modal" aria-label="Close">Abbrechen</button>
-                             <button class="btn btn-primary" @click="createItem" >Speichern</button>
+                             <button class="btn btn-primary" @click="zuordnungSpeichern" >Speichern</button>
                          </div>
                        </div>
                      </div>
                  </div>
+                 <!--Modal Kurse und Benutzer zuordnen close -->
                     </div>
                 </div>
             </div>
@@ -149,6 +150,8 @@
 /*jshint esversion: 6 */
     export default {
         mounted() {
+                
+
           this.getkursePage(this.pagination.current_page);
           axios.get('/api/usersall').then(response => {
             this.users = response.data;
@@ -237,7 +240,10 @@
 
         },
         zuordnungSpeichern(){
-
+                console.log(this.zuordnenKurs);
+              axios.post('/api/kurseuser', this.zuordnenKurs).then(response => {
+                console.log('Done');
+              });
         }
         }
     };

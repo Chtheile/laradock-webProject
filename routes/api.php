@@ -50,7 +50,7 @@ Route::post('addkurse','KurseController@addKurse')->middleware('auth');
 Route::get('kurse',function(){
   return Kurse::latest()->paginate(5);
 })->middleware('auth');
-
+Route::post('kurseuser', 'KurseController@kursUser')->middleware('auth');
 
 
 

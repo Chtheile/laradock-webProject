@@ -29,6 +29,14 @@ class KurseController extends Controller
             return $Response;
         }
     }
+    public function kursUser(Request $request)
+    {
+        $kurses = $request->all();
 
+        Log::info($kurses);
+        $response = Kurse::find($request->get('id'))->users()->get();
+        Log::info($response);
+
+    }
 
 }
