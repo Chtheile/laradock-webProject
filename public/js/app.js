@@ -11588,6 +11588,9 @@ var app = new Vue({
     el: '#app',
     data: {
         messages: [],
+        text: {
+            hallo: 'hallo'
+        },
         usersInRoom: [],
         currentView: 'home'
     },
@@ -12803,8 +12806,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /*jshint esversion: 6 */
 /* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['text'],
     mounted: function mounted() {
         console.log('Component mounted.');
+        console.log(this.text.hallo);
     }
 });
 
@@ -34003,8 +34008,6 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _vm._m(0)
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "container"
   }, [_c('div', {
@@ -34015,11 +34018,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "panel panel-default"
   }, [_c('div', {
     staticClass: "panel-heading"
-  }, [_vm._v("Hindernisrichter in der Vielseitigkeit")]), _vm._v(" "), _c('div', {
+  }, [_vm._v(_vm._s(_vm.text.hallo))]), _vm._v(" "), _vm._m(0)])])])])
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
     staticClass: "panel-body"
   }, [_c('div', {
     staticClass: "pull-left"
-  }, [_c('h4', [_vm._v("Kursverwaltung: ")])])])])])])])
+  }, [_c('h4', [_vm._v("Aktuelles: ")])])])
 }]}
 module.exports.render._withStripped = true
 if (false) {

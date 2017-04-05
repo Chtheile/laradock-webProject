@@ -1,7 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-  <transition name="slide-fade">
+
+<home :text="text"></home>
+  <!--<transition name="slide-fade">
         <component :is="currentView" ></component>
-  </transition>
+  </transition>-->
+
 @endsection

@@ -42,6 +42,9 @@
       el: '#app',
       data: {
           messages: [],
+          text:{
+            hallo :'hallo'
+          },
           usersInRoom: [],
           currentView:'home',
       },

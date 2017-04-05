@@ -119,7 +119,7 @@
                                         Stoppen von Teilnehmern
                                     </a>
                                     <a href="#" @click="currentView='home'">
-                                      Hindernispflege
+                                        Hindernispflege
                                     </a>
                                     <a href="#" @click="currentView='home'">
                                         Freihalten der Strecke
@@ -147,12 +147,7 @@
                                   Auffrischung
                               </a>
                             </li>
-                            <li>
-                              <a href="#" href="#" @click="currentView='home'" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                Aktuelles
-                              </a>
-                            </li>
-                        <!--    <li class="dropdown">
+                          <!--    <li class="dropdown">
                               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                   Kurse <span class="caret"></span>
                               </a>
