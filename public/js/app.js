@@ -11589,7 +11589,12 @@ var app = new Vue({
     data: {
         messages: [],
         text: {
-            hallo: 'hallo'
+            name: 'Aktuelles',
+            body: 'Hallo wilkommen auf der Seite der Reitervereinigung. Im folgenen Text werden die Aktuellen änderungen im Tunier beschrieben',
+            author: 'Katharina Wittings',
+            type: 'pic',
+            media: ''
+
         },
         usersInRoom: [],
         currentView: 'home'
@@ -12803,14 +12808,98 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /*jshint esversion: 6 */
+
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['text'],
-    mounted: function mounted() {
-        console.log('Component mounted.');
-        console.log(this.text.hallo);
+  props: ['text'],
+  mounted: function mounted() {
+    console.log('Component mounted.');
+    console.log(this.text);
+  },
+  data: function data() {
+    return {
+      formErrors: {},
+      kurse: {}
+    };
+  },
+
+  methods: {
+    createItem: function createItem() {
+      event.preventDefault();
+
+      // Update button text.
+      this.uploadButton = {
+        'innerHTML': 'Uploading...'
+      };
+
+      // Get the selected files from the input. http://blog.teamtreehouse.com/uploading-files-ajax
+      var files = document.getElementById('file-select');
+      console.log(files);
+      console.log(files.files);
+      files = files.files;
+      console.log(files.length);
+      // Create a new FormData object.
+      var formData = new FormData();
+      for (var i = 0; i < files.length; i++) {
+        var file = files[i];
+
+        // Check the file type.
+        if (!file.type.match('image.*')) {
+          continue;
+        }
+
+        // Add the file to the request.
+        formData.append('photos[]', file, file.name);
+      }
     }
+  }
 });
 
 /***/ }),
@@ -34018,13 +34107,160 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "panel panel-default"
   }, [_c('div', {
     staticClass: "panel-heading"
-  }, [_vm._v(_vm._s(_vm.text.hallo))]), _vm._v(" "), _vm._m(0)])])])])
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
+  }, [_vm._v(_vm._s(_vm.text.name) + " "), _c('div', {
+    staticClass: "pull-right"
+  }, [_vm._v(_vm._s(_vm.text.author) + "   "), _c('button', {
+    staticClass: "btn btn-primary btn-sm",
+    attrs: {
+      "type": "button",
+      "data-toggle": "modal",
+      "data-target": "#create-kurse"
+    }
+  }, [_vm._v("\r\n                     Bearbeiten\r\n                   ")])])]), _vm._v(" "), _c('div', {
     staticClass: "panel-body"
   }, [_c('div', {
     staticClass: "pull-left"
-  }, [_c('h4', [_vm._v("Aktuelles: ")])])])
+  }, [_c('h5', [_vm._v(_vm._s(_vm.text.body) + " ")])]), _vm._v(" "), _c('div', {
+    staticClass: "modal fade",
+    attrs: {
+      "id": "create-kurse",
+      "role": "dialog",
+      "aria-labelledby": "myModalLabel"
+    }
+  }, [_c('div', {
+    staticClass: "modal-dialog",
+    attrs: {
+      "role": "document"
+    }
+  }, [_c('div', {
+    staticClass: "modal-content"
+  }, [_vm._m(0), _vm._v(" "), _c('div', {
+    staticClass: "modal-body"
+  }, [_c('div', {
+    staticClass: "row"
+  }, [_c('div', {
+    staticClass: "form-horizontal",
+    attrs: {
+      "id": "settings"
+    }
+  }, [_c('div', {
+    staticClass: "from-group"
+  }, [_c('label', {
+    staticClass: "col-sm-2 control-label",
+    attrs: {
+      "for": "name"
+    }
+  }, [_vm._v(" Überschrift:  ")]), _vm._v(" "), _c('div', {
+    staticClass: "col-sm-10"
+  }, [_c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.text.name),
+      expression: "text.name"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      "type": "text",
+      "id": "name",
+      "placeholder": "Start Type"
+    },
+    domProps: {
+      "value": (_vm.text.name)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.text.name = $event.target.value
+      }
+    }
+  }), _vm._v(" "), (_vm.formErrors['name']) ? _c('span', {
+    staticClass: "error text-danger"
+  }, [_vm._v(_vm._s(_vm.formErrors['name']))]) : _vm._e()])]), _vm._v(" "), _c('div', {
+    staticClass: "from-group"
+  }, [_c('label', {
+    staticClass: "col-sm-2 control-label",
+    attrs: {
+      "for": "body"
+    }
+  }, [_vm._v("Text:")]), _vm._v(" "), _c('div', {
+    staticClass: "col-sm-10"
+  }, [_c('textarea', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.text.body),
+      expression: "text.body"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      "rows": "5",
+      "id": "body"
+    },
+    domProps: {
+      "value": (_vm.text.body)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.text.body = $event.target.value
+      }
+    }
+  }), _vm._v(" "), (_vm.formErrors['description']) ? _c('span', {
+    staticClass: "help-block"
+  }, [_c('strong', {
+    staticClass: "text-danger"
+  }, [_vm._v(_vm._s(_vm.formErrors['body']))])]) : _vm._e()])]), _vm._v(" "), _c('input', {
+    attrs: {
+      "type": "file",
+      "id": "file-select",
+      "name": "photos[]",
+      "multiple": ""
+    }
+  }), _vm._v(" "), _c('button', {
+    attrs: {
+      "type": "submit",
+      "id": "upload-button"
+    },
+    on: {
+      "click": _vm.createItem
+    }
+  }, [_vm._v("Upload")])])])]), _vm._v(" "), _c('div', {
+    staticClass: "modal-footer"
+  }, [_c('button', {
+    staticClass: "btn btn-default",
+    attrs: {
+      "type": "button",
+      "data-dismiss": "modal",
+      "aria-label": "Close"
+    }
+  }, [_vm._v("Abbrechen")]), _vm._v(" "), _c('button', {
+    staticClass: "btn btn-primary",
+    on: {
+      "click": _vm.createItem
+    }
+  }, [_vm._v("Anlegen")])])])])])])])])])])
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "modal-header"
+  }, [_c('button', {
+    staticClass: "close",
+    attrs: {
+      "type": "button",
+      "data-dismiss": "modal",
+      "aria-label": "Close",
+      "role": "dialog"
+    }
+  }, [_c('span', {
+    attrs: {
+      "aria-hidden": "true"
+    }
+  }, [_vm._v("×")])]), _vm._v(" "), _c('h4', {
+    staticClass: "modal-title",
+    attrs: {
+      "id": "myModalLabel"
+    }
+  }, [_vm._v("Text Bearbeiten")])])
 }]}
 module.exports.render._withStripped = true
 if (false) {
