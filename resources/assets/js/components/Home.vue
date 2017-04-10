@@ -40,12 +40,15 @@
                                         </span>
                                     </div>
                                 </div>
-                                <input type="file" id="file-select" name="photos[]" multiple/>
-                                <button type="submit" id="upload-button"  @click="createItem">Upload</button>
+                                <form enctype="multipart/form-data">
+                                    <input type="file" id="input">
+                                  <input type="button" value="Upload" @click="createItem"/>
+                                </form>
                             </div>
                           </div>
                         </div>
                           <div class="modal-footer">
+
                               <button type="button" class="btn btn-default" data-dismiss="modal" aria-label="Close">Abbrechen</button>
                               <button class="btn btn-primary" @click="createItem" >Anlegen</button>
                           </div>
@@ -68,7 +71,7 @@
       props: ['text'],
         mounted() {
             console.log('Component mounted.');
-            console.log(this.text);
+
         },
         data() {
           return {
@@ -78,36 +81,25 @@
         },
         methods:{
           createItem (){
-            event.preventDefault();
 
-              // Update button text.
-              this.uploadButton ={
-                'innerHTML' : 'Uploading...',
-            };
-
-            // Get the selected files from the input. http://blog.teamtreehouse.com/uploading-files-ajax
-            var files = document.getElementById('file-select');
-            console.log(files);
-            console.log(files.files);
-            files = files.files;
-            console.log(files.length);
-            // Create a new FormData object.
-            var formData = new FormData();
-            for (var i = 0; i < files.length; i++) {
-              var file = files[i];
-
-              // Check the file type.
-              if (!file.type.match('image.*')) {
-                continue;
-              }
-
-              // Add the file to the request.
-              formData.append('photos[]', file, file.name);
-          }
+            var selectedFile = document.getElementById('input').files;
+            var   nFiles = selectedFile.length;
+            var uploadDatei = selectedFile[0];
 
 
-
-          },
+            var fd = new FormData();
+            fd.append('uploadFile',uploadDatei);
+            fd.append('name',this.text.name);
+            fd.append('body',this.text.body);
+            fd.append('author',this.text.author);
+            fd.append('id',this.text.id);
+            fd.append('type',this.text.type);
+            console.log(fd);
+            console.log(this.text);
+            axios.post('/api/testText', fd).then(response => {
+              console.log('Done');
+            });
+            },
         }
     };
 </script>

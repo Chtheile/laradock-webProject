@@ -66,4 +66,4 @@ Route::get('testKurse', function (){
   return ['status' => 'OK'];
 })->middleware('auth');
 
-Route::get('testText', 'TextController@test')->middleware('auth');
+Route::post('testText', 'TextController@test')->middleware('auth');

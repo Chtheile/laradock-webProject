@@ -11589,6 +11589,7 @@ var app = new Vue({
     data: {
         messages: [],
         text: {
+            id: '',
             name: 'Aktuelles',
             body: 'Hallo wilkommen auf der Seite der Reitervereinigung. Im folgenen Text werden die Aktuellen änderungen im Tunier beschrieben',
             author: 'Katharina Wittings',
@@ -12854,6 +12855,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 /*jshint esversion: 6 */
 
@@ -12861,7 +12865,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   props: ['text'],
   mounted: function mounted() {
     console.log('Component mounted.');
-    console.log(this.text);
   },
   data: function data() {
     return {
@@ -12872,32 +12875,23 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
   methods: {
     createItem: function createItem() {
-      event.preventDefault();
 
-      // Update button text.
-      this.uploadButton = {
-        'innerHTML': 'Uploading...'
-      };
+      var selectedFile = document.getElementById('input').files;
+      var nFiles = selectedFile.length;
+      var uploadDatei = selectedFile[0];
 
-      // Get the selected files from the input. http://blog.teamtreehouse.com/uploading-files-ajax
-      var files = document.getElementById('file-select');
-      console.log(files);
-      console.log(files.files);
-      files = files.files;
-      console.log(files.length);
-      // Create a new FormData object.
-      var formData = new FormData();
-      for (var i = 0; i < files.length; i++) {
-        var file = files[i];
-
-        // Check the file type.
-        if (!file.type.match('image.*')) {
-          continue;
-        }
-
-        // Add the file to the request.
-        formData.append('photos[]', file, file.name);
-      }
+      var fd = new FormData();
+      fd.append('uploadFile', uploadDatei);
+      fd.append('name', this.text.name);
+      fd.append('body', this.text.body);
+      fd.append('author', this.text.author);
+      fd.append('id', this.text.id);
+      fd.append('type', this.text.type);
+      console.log(fd);
+      console.log(this.text);
+      axios.post('/api/testText', fd).then(function (response) {
+        console.log('Done');
+      });
     }
   }
 });
@@ -34210,22 +34204,24 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "help-block"
   }, [_c('strong', {
     staticClass: "text-danger"
-  }, [_vm._v(_vm._s(_vm.formErrors['body']))])]) : _vm._e()])]), _vm._v(" "), _c('input', {
+  }, [_vm._v(_vm._s(_vm.formErrors['body']))])]) : _vm._e()])]), _vm._v(" "), _c('form', {
+    attrs: {
+      "enctype": "multipart/form-data"
+    }
+  }, [_c('input', {
     attrs: {
       "type": "file",
-      "id": "file-select",
-      "name": "photos[]",
-      "multiple": ""
+      "id": "input"
     }
-  }), _vm._v(" "), _c('button', {
+  }), _vm._v(" "), _c('input', {
     attrs: {
-      "type": "submit",
-      "id": "upload-button"
+      "type": "button",
+      "value": "Upload"
     },
     on: {
       "click": _vm.createItem
     }
-  }, [_vm._v("Upload")])])])]), _vm._v(" "), _c('div', {
+  })])])])]), _vm._v(" "), _c('div', {
     staticClass: "modal-footer"
   }, [_c('button', {
     staticClass: "btn btn-default",

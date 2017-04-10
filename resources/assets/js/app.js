@@ -43,6 +43,7 @@
       data: {
           messages: [],
           text:{
+            id :'',
             name :'Aktuelles',
             body : 'Hallo wilkommen auf der Seite der Reitervereinigung. Im folgenen Text werden die Aktuellen änderungen im Tunier beschrieben',
             author : 'Katharina Wittings',
