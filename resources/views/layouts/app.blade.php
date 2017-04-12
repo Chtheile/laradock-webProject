@@ -44,37 +44,36 @@
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <!--<ul class="nav navbar-nav" >
-                        &nbsp;<li ><a href="#" @click="currentView='home'">Home </a> </li>
+                        &nbsp;<li ><a href="#" @click="getContendView">Home </a> </li>
                     </ul> -->
 
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
-                        @if (Auth::guest())
-                            <li><a href="{{ route('login') }}">Login</a></li>
-                            <li><a href="{{ route('register') }}">Register</a></li>
-                        @else
+
+
                           <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                     Grundlegendes <span class="caret"></span>
                                 </a>
                                 <ul class="dropdown-menu" role="menu">
                                   <li>
-                                      <a href="#" @click="currentView='home'">
+                                      <a href="#" @click="getContendView(2)">
                                           Organisation
                                       </a>
-                                      <a href="#" @click="currentView='home'">
+                                      <a href="#" @click="getContendView(3)">
                                           Aufgaben der Hindernisrichter
                                       </a>
-                                      <a href="#" @click="currentView='home'">
+                                      <a href="#" @click="getContendView(4)">
                                         Ausfüllen HR-Karte
                                       </a>
-                                      <a href="#" @click="currentView='home'">
+                                      <a href="#" @click="getContendView(5)">
                                           Organisation des Teams am Sprung
                                       </a>
-                                      <a href="#" @click="currentView='home'">
+                                      <a href="#" @click="getContendView(6)">
                                           Funkverkehr
                                       </a>
+
                                   </li>
                                 </ul>
                             </li>
@@ -85,23 +84,26 @@
                               </a>
                               <ul class="dropdown-menu" role="menu">
                                 <li>
-                                    <a href="#" @click="currentView='home'">
+                                    <a href="#" @click="getContendView(7)">
                                         Grundlagen
                                     </a>
-                                    <a href="#" @click="currentView='home'">
+                                    <a href="#" @click="getContendView(8)">
                                         Hindernisfehler
                                     </a>
-                                    <a href="#" @click="currentView='home'">
+                                    <a href="#" @click="getContendView(9)">
                                       Schmale Sprünge
                                     </a>
-                                    <a href="#" @click="currentView='home'">
+                                    <a href="#" @click="getContendView(10)">
                                       Kombinationen
                                     </a>
-                                    <a href="#" @click="currentView='home'">
+                                    <a href="#" @click="getContendView(11)">
                                       Alternativen
                                     </a>
-                                    <a href="#" @click="currentView='home'">
+                                    <a href="#" @click="getContendView(12)">
                                       MIM / Sicherheitsteile
+                                    </a>
+                                    <a href="#" @click="getfrageView(1)">
+                                      Bewertungsaufgabe
                                     </a>
                                 </li>
                               </ul>
@@ -112,16 +114,16 @@
                               </a>
                               <ul class="dropdown-menu" role="menu">
                                 <li>
-                                    <a href="#" @click="currentView='home'">
+                                    <a href="#" @click="getContendView(13)">
                                         Verhalten beim Sturz
                                     </a>
-                                    <a href="#" @click="currentView='home'">
+                                    <a href="#" @click="getContendView(14)">
                                         Stoppen von Teilnehmern
                                     </a>
-                                    <a href="#" @click="currentView='home'">
+                                    <a href="#" @click="getContendView(15)">
                                         Hindernispflege
                                     </a>
-                                    <a href="#" @click="currentView='home'">
+                                    <a href="#" @click="getContendView(16)">
                                         Freihalten der Strecke
                                     </a>
                                 </li>
@@ -133,17 +135,17 @@
                               </a>
                               <ul class="dropdown-menu" role="menu">
                                 <li>
-                                    <a href="#" @click="currentView='home'">
+                                    <a href="#" @click="getContendView(17)">
                                         Überholen
                                     </a>
-                                    <a href="#" @click="currentView='home'">
+                                    <a href="#" @click="getContendView(18)">
                                         Fremde Hilfe
                                     </a>
                                 </li>
                               </ul>
                             </li>
                             <li>
-                              <a href="#" href="#" @click="currentView='home'" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                              <a href="#" href="#" @click="getContendView(19)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                   Auffrischung
                               </a>
                             </li>
@@ -184,8 +186,15 @@
                               </ul>
                             </li>
                           -->
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                          @if (Auth::guest())
+                              <li><a href="{{ route('login') }}">Login</a></li>
+                                      <!--  <li><a href="{{ route('register') }}">Register</a></li>-->
+                            @else
+                              <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#create-text">
+                                   Bearbeiten
+                                 </button>
+                               <li class="dropdown">
+                                <a id="usernameID" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
@@ -208,7 +217,7 @@
                                     </li>
                                 </ul>
                             </li>
-                        @endif
+                          @endif
                     </ul>
                 </div>
             </div>
@@ -230,7 +239,8 @@
             Reitervereinigung
         </div>
         <div    class="pull-right" >
-            <a href="{{url('home')}}"> Home</a>
+            <a href="{{url('home')}}"> Home  </a> |
+              <a href="{{url('impressum')}}">Impressum</a>
         </div>
     </div>
 </footer>

@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 use App\Text;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
+
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Filesystem\Filesystem;
 class TextController extends Controller
 {
     //
@@ -14,35 +17,54 @@ class TextController extends Controller
 
     public function test(Request $request)
     {
-
-     Log::info($request->get('name'));
-     $text = new Text(array(
-          'name' => $request->get('name'),
-          'body'  => $request->get('body'),
-          'author'  => $request->get('author'),
-          'type'  => $request->get('type'),
-        ));
-
-     $path = $request->file('uploadFile')->store('test');
-      Log::info($path);
-
-      $text->media = $path;
+      $path;
+      Log::info($request);
+      $user = Auth::user();
+      $text = Text::find($request->get('id'));
 
 
-      //Storage::disk('local')->put('file.txt', 'Contents');
-      //$url = Storage::url('Bild1.jpg');
-      //$contents = Storage::get('Bild1.jpg');
-      $Response =     $text->save();
 
-        Log::info($Response);
-        return $Response;
+      $text->name = $request->get('name');
+      $text->body = $request->get('body');
+      $text->author = $user->name;
 
 
+
+      if (!$request->file('uploadFile')=='') {
+        if (!$text->filepath==''){
+          Storage::delete($text->filepath);
+
+        }
+        $path = $request->file('uploadFile')->store('public/test');
+        $text->filepath =$path;
+        if (\File::extension($path) == 'png' || \File::extension($path) == 'jpg') {
+        $text->type = 'png' ;
+        Log::info($text->type);
+      }else {
+        $text->type = \File::extension($path) ;
+      }
+
+
+        $text->media = Storage::url($path);
+
+
+      }
+      /*else {
+          Storage::delete($text->filepath);
+          $text->filepath = '';
+          $text->media = '';
+          $text->type = '';
+      }*/
+      $text->save();
+
+    //  Log::info($text);
+      return $text;
     }
 
-     public function getContend(Request $request)
+    public function textID($id)
     {
-
-      return ['status' => 'OK'];
+      $text = Text::find($id);
+      Log::info($text);
+      return $text;
     }
 }

@@ -66,4 +66,11 @@ Route::get('testKurse', function (){
   return ['status' => 'OK'];
 })->middleware('auth');
 
+
+
+//text Routes
+Route::get('texte/{id}', 'TextController@textID');
 Route::post('testText', 'TextController@test')->middleware('auth');
+
+//Frage Routes
+Route::get('frage/{id}','FrageController@frageId');

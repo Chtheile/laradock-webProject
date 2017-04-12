@@ -37,22 +37,18 @@
 
   Vue.component('kurseuebersicht',require('./components/KurseUebersicht.vue'));
 
+  Vue.component('frage',require('./components/FragenTemp.vue'));
+
+
   const app = new Vue({
 
       el: '#app',
       data: {
           messages: [],
-          text:{
-            id :'',
-            name :'Aktuelles',
-            body : 'Hallo wilkommen auf der Seite der Reitervereinigung. Im folgenen Text werden die Aktuellen änderungen im Tunier beschrieben',
-            author : 'Katharina Wittings',
-            type : 'pic',
-            media: '',
-
-          },
+          text:[],
           usersInRoom: [],
-          currentView:'home',
+          currentView:'',
+          frage:[],
       },
       methods: {
           addMessage(message) {
@@ -63,14 +59,40 @@
               axios.post('/api/messages', message).then(response => {
                   console.log(response);
               });
-          }
-      },
-      created() {
-
-          axios.get('/api/messages').then(response => {
-              this.messages = response.data;
+          },
+          getContendView(id){
+            console.log('works');
+            this.currentView = 'home';
+            axios.get('/api/texte/'+ id).then(response => {
+                console.log(response);
+                this.text = response.data;
+            });
+          },
+          getfrageView(id){
+            console.log(id);
+            this.currentView='frage';
+            axios.get('/api/frage/'+id).then(response => {
               console.log(response);
-          });
+              this.frage = response.data;
+            });
+          },
+          incrementTotal: function (id) {
+            console.log(id);
+            if (id.type == 1)
+            {
+              this.getContendView(id.id);
+            }else {
+              this.getfrageView(id.id);
+            }
+          }
+        },
+        created: function() {
+          this.getContendView(1);
+
+        //  axios.get('/api/messages').then(response => {
+          //    this.messages = response.data;
+      //        console.log(response);
+        //});
           //  Echo.join('chatroom')
           //    .here((users) => {
           //      this.usersInRoom = users;
@@ -81,7 +103,8 @@
           //.listen('MessagePosted', (e) => {
           //      console.log(e);
           //  });
-      }
+      },
+
 
   });
 

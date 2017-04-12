@@ -3,22 +3,37 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">{{text.name}} <div class="pull-right">{{text.author}}   <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#create-kurse">
-                     Bearbeiten
-                   </button> </div></div>
+                <div class="panel-heading">{{text.name}} <div class="pull-right">{{text.author}}    </div></div>
 
                 <div class="panel-body">
-                  <div class="pull-left">
-                      <h5>{{text.body}} </h5>
+                                        {{text.body}}
+
+                    <div v-if="text.type === 'png'">
+                      <img  :src="text.media"  style="max-width: 75%; max-height: 75%;" class="rounded" alt="...">
                     </div>
+                    <br>
+                    <br>
+                    <!-- 16:9 aspect ratio -->
+
+                    <div v-if="text.type === 'mp4'" class="embed-responsive embed-responsive-16by9 ">
+                      <video width="320" height="240" controls>
+                        <source  :src="text.media" type="video/mp4">
+                            Your browser does not support the video tag.
+                     </video>
+                    </div>
+
+                    <audio v-if="text.type === 'mpga'" controls>
+                        <source  :src="text.media" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
                     <!-- Modal add Kurse -->
-                    <div class="modal fade" id="create-kurse" role="dialog" aria-labelledby="myModalLabel">
+                    <div class="modal fade" id="create-text" role="dialog" aria-labelledby="myModalLabel">
                       <div class="modal-dialog" role="document">
                         <div class="modal-content">
                           <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close" role="dialog"><span aria-hidden="true">×</span></button>
                             <h4 class="modal-title" id="myModalLabel">Text Bearbeiten</h4>
-                          </div>
+                          </div>x
                           <div class="modal-body">
                             <div class="row" >
                             <div id="settings" class="form-horizontal">
@@ -40,10 +55,14 @@
                                         </span>
                                     </div>
                                 </div>
-                                <form enctype="multipart/form-data">
-                                    <input type="file" id="input">
-                                  <input type="button" value="Upload" @click="createItem"/>
-                                </form>
+                                <div class="from-group">
+                                    <label class="col-sm-2 control-label" for="body">Media:</label>
+                                    <div class="col-sm-10">
+                                      <form enctype="multipart/form-data">
+                                        <input class="form-control" type="file" id="input">
+                                      </form>
+                                    </div>
+                              </div>
                             </div>
                           </div>
                         </div>
@@ -77,6 +96,7 @@
           return {
             formErrors : {},
             kurse : {},
+            img : 'http://localhost/storage/',
         };
         },
         methods:{
@@ -98,6 +118,10 @@
             console.log(this.text);
             axios.post('/api/testText', fd).then(response => {
               console.log('Done');
+              this.text.media = response.data.media;
+              this.text.type = response.data.type;
+              $("#create-text").modal('hide');
+
             });
             },
         }

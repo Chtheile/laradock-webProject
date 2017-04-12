@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Text extends Model
 {
-    protected $fillable = ['name','body','author','type','media'];
+    protected $fillable = ['name','body','author','type','media','filepath'];
 }

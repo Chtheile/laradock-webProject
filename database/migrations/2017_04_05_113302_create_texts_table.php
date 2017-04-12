@@ -21,6 +21,7 @@ class CreateTextsTable extends Migration
             $table->string('author');
             $table->string('type');
             $table->string('media');
+            $table->string('filepath');
         });
     }
 

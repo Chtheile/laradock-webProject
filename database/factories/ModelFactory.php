@@ -30,3 +30,12 @@ $factory->define(App\Kurse::class, function (Faker\Generator $faker) {
         'description' => $faker->name,
     ];
 });
+
+$factory->define(App\Text::class,function (Faker\Generator $faker)
+{
+  return [
+      'name' => $faker->name,
+      'body' => $faker->realText,
+      'author'=> $faker->name,
+  ];
+});
