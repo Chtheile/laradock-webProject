@@ -34322,7 +34322,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }), _vm._v("\n                        Your browser does not support the audio element.\n                    ")]) : _vm._e(), _vm._v(" "), _vm._m(0), _vm._v(" "), _c('div', {
     staticClass: "row"
-  }, [_c('div', {
+  }, [(_vm.frage.antwort1 !== '0') ? _c('div', {
     staticClass: "col-xs-6"
   }, [_c('input', {
     attrs: {
@@ -34338,7 +34338,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "for": "antwort1"
     }
-  }, [_vm._v(_vm._s(_vm.frage.antwort1))])]), _vm._v(" "), _c('div', {
+  }, [_vm._v(_vm._s(_vm.frage.antwort1))])]) : _vm._e(), _vm._v(" "), (_vm.frage.antwort2 !== '0') ? _c('div', {
     staticClass: "col-xs-6"
   }, [_c('input', {
     attrs: {
@@ -34354,9 +34354,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "for": "antwort2"
     }
-  }, [_vm._v(_vm._s(_vm.frage.antwort2))])])]), _vm._v(" "), _c('div', {
+  }, [_vm._v(_vm._s(_vm.frage.antwort2))])]) : _vm._e()]), _vm._v(" "), _c('div', {
     staticClass: "row"
-  }, [_c('div', {
+  }, [(_vm.frage.antwort3 !== '0') ? _c('div', {
     staticClass: "col-xs-6"
   }, [_c('input', {
     attrs: {
@@ -34372,7 +34372,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "for": "antwort3"
     }
-  }, [_vm._v(_vm._s(_vm.frage.antwort3))])]), _vm._v(" "), _c('div', {
+  }, [_vm._v(_vm._s(_vm.frage.antwort3))])]) : _vm._e(), _vm._v(" "), (_vm.frage.antwort4 !== '0') ? _c('div', {
     staticClass: "col-xs-6"
   }, [_c('input', {
     attrs: {
@@ -34388,7 +34388,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "for": "antwort4"
     }
-  }, [_vm._v(_vm._s(_vm.frage.antwort4))])])])])])])])])
+  }, [_vm._v(_vm._s(_vm.frage.antwort4))])]) : _vm._e()])])])])])])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "row"

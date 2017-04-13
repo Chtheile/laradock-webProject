@@ -32,20 +32,21 @@
                           </div>
                         </div>
                         <div class="row">
-                          <div class="col-xs-6">
+                          <div v-if="frage.antwort1 !== '0'" class="col-xs-6">
                             <input id="antwort1" type="checkbox" @click="getContendView(frage.antwortLink1,frage.antwortLink1type)">
                             <label for="antwort1">{{ frage.antwort1 }}</label>
                           </div>
-                          <div class="col-xs-6">
+                          <div v-if="frage.antwort2 !== '0'" class="col-xs-6">
                             <input id="antwort2" type="checkbox" @click="getContendView(frage.antwortLink2,frage.antwortLink2type)">
                             <label  for="antwort2">{{ frage.antwort2 }}</label></div>
                         </div>
                         <div class="row">
-                          <div class="col-xs-6">
-                            <input id="antwort3" type="checkbox" @click="getContendView(frage.antwortLink3,frage.antwortLink3type)">
+                          <div v-if="frage.antwort3 !== '0'" class="col-xs-6">
+                            <input  id="antwort3" type="checkbox" @click="getContendView(frage.antwortLink3,frage.antwortLink3type)">
                             <label  for="antwort3">{{ frage.antwort3 }}</label>
                           </div>
-                          <div class="col-xs-6"><input id="antwort4" type="checkbox" @click="getContendView(frage.antwortLink4,frage.antwortLink4type)">
+
+                          <div v-if="frage.antwort4 !== '0'" class="col-xs-6"><input id="antwort4" type="checkbox" @click="getContendView(frage.antwortLink4,frage.antwortLink4type)">
                             <label for="antwort4">{{ frage.antwort4 }}</label>
                           </div>
                         </div>
